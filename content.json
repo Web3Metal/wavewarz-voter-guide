@@ -1,0 +1,240 @@
+{
+  "meta": {
+    "title": "WaveWarz Voter Onboarding | W3M Creator Academy",
+    "description": "Beginner-safe onboarding for voting in the July 12 WaveWarz AI Music Tournament."
+  },
+  "brand": {
+    "mark": "W",
+    "primary": "WaveWarz",
+    "secondary": "Produced by Web3 Metal"
+  },
+  "brandHome": "WaveWarz home",
+  "nav": {
+    "ariaLabel": "Course sections",
+    "items": [
+      { "label": "Why Phantom", "href": "#why-wallet" },
+      { "label": "Install", "href": "#install-phantom" },
+      { "label": "Battle Night", "href": "#battle-night" },
+      { "label": "FAQ", "href": "#faq" }
+    ]
+  },
+  "home": {
+    "eyebrow": "W3M Creator Academy",
+    "time": "Estimated total time: 15-25 minutes",
+    "title": "Get ready to vote in the July 12 WaveWarz AI Music Tournament.",
+    "body": "Voting is free. You do not need crypto experience. This quick guide helps you set up Phantom before battle night so your vote is ready when the tournament opens.",
+    "actionsAria": "Primary actions",
+    "actions": [
+      { "label": "Start the guide", "href": "#why-wallet", "variant": "primary" },
+      { "label": "Battle night checklist", "href": "#battle-night", "variant": "secondary" },
+      { "label": "Download Phantom", "href": "#", "variant": "secondary", "urlKey": "phantom" },
+      { "label": "Open WaveWarz", "href": "#", "variant": "secondary", "urlKey": "wavewarz" },
+      { "label": "Set an X Spaces reminder", "href": "#", "variant": "secondary", "urlKey": "x-spaces" }
+    ]
+  },
+  "readiness": {
+    "ariaLabel": "Readiness tracker",
+    "title": "Your voter readiness",
+    "body": "Finish each step before July 12. A tiny amount of SOL may be needed for network activity, but voting itself is free.",
+    "resetLabel": "Reset progress"
+  },
+  "trustStrip": {
+    "ariaLabel": "Core reminders",
+    "items": [
+      "Voting is free.",
+      "No crypto experience needed.",
+      "Phantom helps reduce botting.",
+      "Be ready before battle night."
+    ]
+  },
+  "successCallout": {
+    "ariaLabel": "Free voting reminder",
+    "title": "Good news for first-time voters",
+    "body": "Voting is free. You are not buying a vote. Phantom helps ensure votes come from real participants and reduces botting."
+  },
+  "sections": {
+    "whyWallet": {
+      "step": "Step 1",
+      "time": "Estimated time: 2 minutes",
+      "title": "Why do voters need Phantom?",
+      "body": "Phantom is a wallet app. For this tournament, think of it like a voter pass, not a trading account.",
+      "screenshotLabel": "Screenshot placeholder",
+      "screenshotCaption": "Future screenshot: simple side-by-side of a voter, Phantom, and a clean WaveWarz vote.",
+      "cards": [
+        {
+          "title": "Voting is free",
+          "body": "You are not buying a vote. The goal is to help the tournament confirm that real people are voting instead of bots."
+        },
+        {
+          "title": "Cleaner voting",
+          "body": "Phantom helps reduce botting and keeps the vote cleaner by giving each voter a simple way to connect."
+        },
+        {
+          "title": "Beginner warning",
+          "body": "Never share your Secret Recovery Phrase. WaveWarz, Web3 Metal, and Phantom should never ask for it.",
+          "variant": "warning"
+        }
+      ],
+      "completion": {
+        "id": "why-wallet",
+        "label": "I understand why Phantom is used for voting."
+      }
+    },
+    "installPhantom": {
+      "step": "Step 2",
+      "time": "Estimated time: 5 minutes",
+      "title": "Install Phantom before tournament day",
+      "body": "Install Phantom only from the official app store or Phantom website. Do this before July 12 so you are not rushing during the battle.",
+      "actions": [
+        { "label": "Download Phantom", "href": "#", "variant": "primary", "urlKey": "phantom" }
+      ],
+      "screenshotLabel": "Screenshot placeholder",
+      "screenshotCaption": "Future screenshot: official Phantom download page or app store listing.",
+      "instructions": [
+        { "number": "1", "lead": "Mobile:", "body": "Search for Phantom in your phone's official app store." },
+        { "number": "2", "lead": "Desktop:", "body": "Use the official Phantom browser extension." },
+        { "number": "3", "body": "Ignore ads, fake support accounts, and random download links." }
+      ],
+      "completion": {
+        "id": "install-phantom",
+        "label": "I installed Phantom or know where to install it safely."
+      }
+    },
+    "createWallet": {
+      "step": "Step 3",
+      "time": "Estimated time: 5-10 minutes",
+      "title": "Create your wallet and protect your phrase",
+      "body": "You do not need crypto experience. Follow Phantom's setup prompts and protect the recovery phrase like a password that can never be reset.",
+      "screenshotLabel": "Screenshot placeholder",
+      "screenshotCaption": "Future screenshot: Phantom wallet creation screen, with recovery phrase hidden.",
+      "callout": {
+        "variant": "danger",
+        "title": "Do this slowly",
+        "body": "Write your Secret Recovery Phrase somewhere private. Do not screenshot it. Do not paste it into websites. Do not send it to anyone."
+      },
+      "completion": {
+        "id": "create-wallet",
+        "label": "I created my wallet and stored my phrase safely."
+      }
+    },
+    "addSol": {
+      "step": "Step 4",
+      "time": "Estimated time: 3 minutes",
+      "title": "Know why a tiny amount of SOL may be needed",
+      "body": "Voting is free, but the Solana network may require a tiny amount of SOL for network activity. This is not a ticket price or a payment to WaveWarz.",
+      "screenshotLabel": "Screenshot placeholder",
+      "screenshotCaption": "Future screenshot: Phantom balance area showing where network activity funds appear.",
+      "splitPanels": [
+        {
+          "title": "Keep it simple",
+          "body": "You only need enough for basic network activity if the voting flow requires it. Beginners should avoid experimenting with extra crypto tasks before battle night."
+        },
+        {
+          "title": "Ask early",
+          "body": "If you are unsure how much SOL is needed, ask the official WaveWarz or Web3 Metal community before July 12."
+        }
+      ],
+      "completion": {
+        "id": "add-sol",
+        "label": "I know voting is free and a tiny SOL amount may be for network activity."
+      }
+    },
+    "connectWavewarz": {
+      "step": "Step 5",
+      "time": "Estimated time: 2 minutes on battle night",
+      "title": "Connect to WaveWarz when the voting page opens",
+      "body": "On battle night, use the official WaveWarz voting link. Phantom will ask you to approve the connection.",
+      "actions": [
+        { "label": "Open WaveWarz", "href": "#", "variant": "primary", "urlKey": "wavewarz" }
+      ],
+      "screenshotLabel": "Screenshot placeholder",
+      "screenshotCaption": "Future screenshot: WaveWarz connect wallet button and Phantom approval prompt.",
+      "instructions": [
+        { "number": "1", "body": "Open the official WaveWarz voting page." },
+        { "number": "2", "body": "Tap or click connect wallet." },
+        { "number": "3", "body": "Choose Phantom and approve only what you understand." }
+      ],
+      "instructionVariant": "compact",
+      "completion": {
+        "id": "connect-wavewarz",
+        "label": "I know how I will connect Phantom to WaveWarz."
+      }
+    },
+    "battleNight": {
+      "step": "July 12",
+      "time": "Estimated time: 5 minutes once voting opens",
+      "title": "Battle night mission checklist",
+      "body": "The goal is to be ready before battle night, then vote calmly when the tournament is live.",
+      "actions": [
+        { "label": "Set an X Spaces reminder", "href": "#", "variant": "secondary", "urlKey": "x-spaces" },
+        { "label": "Open WaveWarz", "href": "#", "variant": "primary", "urlKey": "wavewarz" }
+      ],
+      "screenshotLabel": "Screenshot placeholder",
+      "screenshotCaption": "Future screenshot: battle night voting page, X Space reminder, and final vote confirmation.",
+      "missions": [
+        {
+          "id": "battle-x-space",
+          "title": "1. Join the X Space",
+          "body": "Listen for live updates and timing."
+        },
+        {
+          "id": "battle-open-wavewarz",
+          "title": "2. Open wavewarz.com",
+          "body": "Use the official WaveWarz link only."
+        },
+        {
+          "id": "battle-connect-phantom",
+          "title": "3. Connect Phantom",
+          "body": "Approve the voting connection when prompted."
+        },
+        {
+          "id": "battle-vote",
+          "title": "4. Vote",
+          "body": "Pick your favorite AI music battle entry."
+        },
+        {
+          "id": "battle-enjoy",
+          "title": "5. Enjoy the show",
+          "body": "Stay in the room and support the artists."
+        }
+      ]
+    },
+    "faq": {
+      "step": "Help",
+      "time": "Estimated time: 3 minutes",
+      "title": "Beginner FAQ",
+      "body": "Short answers for voters who are new to Web3.",
+      "screenshotLabel": "Screenshot placeholder",
+      "screenshotCaption": "Future screenshot: where to find official WaveWarz and Web3 Metal community help.",
+      "items": [
+        {
+          "question": "Do I need crypto experience?",
+          "answer": "No. This guide is built for complete beginners.",
+          "open": true
+        },
+        {
+          "question": "Does voting cost money?",
+          "answer": "Voting is free. A tiny amount of SOL may be needed for network activity, depending on the voting flow."
+        },
+        {
+          "question": "Why Phantom?",
+          "answer": "Phantom helps reduce botting and keeps the vote cleaner by making it harder for fake activity to flood the tournament."
+        },
+        {
+          "question": "What should I never share?",
+          "answer": "Never share your Secret Recovery Phrase. Anyone who asks for it should not be trusted."
+        }
+      ]
+    }
+  },
+  "footer": {
+    "titleStrong": "WaveWarz",
+    "titleRest": "voter onboarding",
+    "help": "Questions? Join the WaveWarz community or Web3 Metal community for help."
+  },
+  "urls": {
+    "phantom": "",
+    "wavewarz": "",
+    "x-spaces": ""
+  }
+}
