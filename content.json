@@ -323,10 +323,6 @@
       "time": "Estimated time: 3 minutes",
       "title": "Beginner FAQ",
       "body": "Short answers for voters who are new to Web3.",
-      "screenshotLabel": "Drop image here: assets/community-help.png",
-      "screenshotPath": "assets/community-help.png",
-      "screenshotAlt": "Official WaveWarz or Web3 Metal community help area.",
-      "screenshotCaption": "Use a screenshot showing where beginners can find the official WaveWarz or Web3 Metal community for help.",
       "items": [
         {
           "question": "Do I need crypto experience?",
