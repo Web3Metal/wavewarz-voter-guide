@@ -91,7 +91,7 @@ window.WAVEWARZ_CONTENT = {
     "whyWallet": {
       "step": "Step 1",
       "time": "Estimated time: 5 minutes",
-      "title": "Get Phantom ready",
+      "title": "Get Phantom Ready",
       "body": "Phantom is a wallet app. For this guide, think of it like your voter pass for WaveWarZ. It lets the site confirm that a real wallet is participating without asking for your personal info.",
       "deviceChooser": {
         "title": "How will you be voting?",
@@ -128,7 +128,6 @@ window.WAVEWARZ_CONTENT = {
       "screenshotLabel": "Drop image here: assets/install-phantom.png",
       "screenshotPath": "assets/install-phantom.png",
       "screenshotAlt": "Official Phantom download page or app store listing.",
-      "screenshotCaption": "Use a screenshot of the official Phantom download page, browser extension page, or mobile app store listing.",
       "cards": [
         {
           "title": "Voting is free",
@@ -163,12 +162,11 @@ window.WAVEWARZ_CONTENT = {
     "createWallet": {
       "step": "Step 2",
       "time": "Estimated time: About 2 minutes",
-      "title": "Create your wallet and protect your phrase",
+      "title": "Create Your Wallet and Protect Your Phrase",
       "body": "After Phantom is installed, open it and follow these beginner steps.",
       "screenshotLabel": "Drop image here: assets/create-wallet.png",
       "screenshotPath": "assets/create-wallet.png",
       "screenshotAlt": "Phantom wallet creation screen with private phrase hidden.",
-      "screenshotCaption": "Use a Phantom wallet creation screenshot with any recovery phrase or private information fully hidden.",
       "instructions": [
         {
           "number": "1",
@@ -219,12 +217,11 @@ window.WAVEWARZ_CONTENT = {
     "addSol": {
       "step": "Step 3",
       "time": "Estimated time: 3 minutes",
-      "title": "Add a small amount of SOL",
+      "title": "Add a Small Amount of SOL",
       "body": "SOL is the digital currency that powers the Solana network. Voting is free. You are not paying to vote or investing in crypto. A small amount of SOL simply covers any network fees that may be required while voting.",
       "screenshotLabel": "Drop image here: assets/add-sol.png",
       "screenshotPath": "assets/add-sol.png",
       "screenshotAlt": "Phantom balance area showing where a small SOL amount appears.",
-      "screenshotCaption": "Use a Phantom balance screenshot that shows where SOL appears in the wallet.",
       "splitPanels": [
         {
           "title": "A beginner-safe amount",
@@ -243,7 +240,7 @@ window.WAVEWARZ_CONTENT = {
     "connectWavewarz": {
       "step": "Step 4",
       "time": "Estimated time: 2 minutes on battle night",
-      "title": "Connect to WaveWarz when the voting page opens",
+      "title": "Connect to WaveWarZ When the Voting Page Opens",
       "body": "Connecting means WaveWarZ can see your wallet address so you can participate in voting. It does not mean WaveWarZ has your Secret Recovery Phrase.",
       "deviceChooser": {
         "title": "Choose your connection path",
@@ -284,7 +281,6 @@ window.WAVEWARZ_CONTENT = {
       "screenshotLabel": "Drop image here: assets/connect-wavewarz.png",
       "screenshotPath": "assets/connect-wavewarz.png",
       "screenshotAlt": "WaveWarz connect wallet button and Phantom approval prompt.",
-      "screenshotCaption": "Use a screenshot of the WaveWarz connect wallet button and the Phantom approval prompt.",
       "callouts": [
         {
           "variant": "danger",
@@ -304,7 +300,7 @@ window.WAVEWARZ_CONTENT = {
     "battleNight": {
       "step": "July 12",
       "time": "Estimated time: 5 minutes once voting opens",
-      "title": "Battle night mission checklist",
+      "title": "Battle Night Mission Checklist",
       "body": "When the live event starts, use this checklist as your action plan for joining, connecting, voting, and enjoying the show.",
       "actions": [
         {
