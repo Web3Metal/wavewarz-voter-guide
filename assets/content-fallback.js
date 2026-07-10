@@ -1,4 +1,4 @@
-{
+window.WAVEWARZ_CONTENT = {
   "meta": {
     "title": "WaveWarz Voter Onboarding | W3M Creator Academy",
     "description": "Beginner-safe onboarding for voting in the July 12 WaveWarz AI Music Tournament."
@@ -12,9 +12,18 @@
   "nav": {
     "ariaLabel": "Course sections",
     "items": [
-      { "label": "Get Phantom", "href": "#why-wallet" },
-      { "label": "Battle Night", "href": "#battle-night" },
-      { "label": "FAQ", "href": "#faq" }
+      {
+        "label": "Get Phantom",
+        "href": "#why-wallet"
+      },
+      {
+        "label": "Battle Night",
+        "href": "#battle-night"
+      },
+      {
+        "label": "FAQ",
+        "href": "#faq"
+      }
     ]
   },
   "home": {
@@ -24,10 +33,29 @@
     "body": "Voting is free. You do not need crypto experience. Phantom is a wallet app. For this guide, think of it like your voter pass for WaveWarZ. It lets the site confirm a real wallet is participating without asking for your personal info.",
     "actionsAria": "Primary actions",
     "actions": [
-      { "label": "Start the guide", "href": "#why-wallet", "variant": "primary" },
-      { "label": "Download Phantom", "href": "#", "variant": "secondary", "urlKey": "phantom" },
-      { "label": "Open WaveWarz", "href": "#", "variant": "secondary", "urlKey": "wavewarz" },
-      { "label": "Set an X Spaces reminder", "href": "#", "variant": "secondary", "urlKey": "x-spaces" }
+      {
+        "label": "Start the guide",
+        "href": "#why-wallet",
+        "variant": "primary"
+      },
+      {
+        "label": "Download Phantom",
+        "href": "#",
+        "variant": "secondary",
+        "urlKey": "phantom"
+      },
+      {
+        "label": "Open WaveWarz",
+        "href": "#",
+        "variant": "secondary",
+        "urlKey": "wavewarz"
+      },
+      {
+        "label": "Set an X Spaces reminder",
+        "href": "#",
+        "variant": "secondary",
+        "urlKey": "x-spaces"
+      }
     ],
     "checklistHelper": {
       "title": "Already have Phantom?",
@@ -113,9 +141,18 @@
         }
       ],
       "instructions": [
-        { "number": "1", "body": "Choose the device you plan to use on battle night." },
-        { "number": "2", "body": "Install the correct Phantom option for that device: browser extension for desktop, app for mobile." },
-        { "number": "3", "body": "Use only official app stores, official extension stores, or the official Phantom website. Ignore ads, fake support accounts, and random download links." }
+        {
+          "number": "1",
+          "body": "Choose the device you plan to use on battle night."
+        },
+        {
+          "number": "2",
+          "body": "Install the correct Phantom option for that device: browser extension for desktop, app for mobile."
+        },
+        {
+          "number": "3",
+          "body": "Use only official app stores, official extension stores, or the official Phantom website. Ignore ads, fake support accounts, and random download links."
+        }
       ],
       "handoff": "Once Phantom is installed, open it and continue to the next step to create your wallet.",
       "completion": {
@@ -133,12 +170,30 @@
       "screenshotAlt": "Phantom wallet creation screen with private phrase hidden.",
       "screenshotCaption": "Use a Phantom wallet creation screenshot with any recovery phrase or private information fully hidden.",
       "instructions": [
-        { "number": "1", "body": "Open Phantom." },
-        { "number": "2", "body": "Choose Create a New Wallet." },
-        { "number": "3", "body": "Create a password for this device." },
-        { "number": "4", "body": "Write down your Secret Recovery Phrase and store it somewhere safe." },
-        { "number": "5", "body": "Confirm the phrase if Phantom asks you to." },
-        { "number": "6", "body": "Your wallet is ready." }
+        {
+          "number": "1",
+          "body": "Open Phantom."
+        },
+        {
+          "number": "2",
+          "body": "Choose Create a New Wallet."
+        },
+        {
+          "number": "3",
+          "body": "Create a password for this device."
+        },
+        {
+          "number": "4",
+          "body": "Write down your Secret Recovery Phrase and store it somewhere safe."
+        },
+        {
+          "number": "5",
+          "body": "Confirm the phrase if Phantom asks you to."
+        },
+        {
+          "number": "6",
+          "body": "Your wallet is ready."
+        }
       ],
       "callouts": [
         {
@@ -252,8 +307,18 @@
       "title": "Battle night mission checklist",
       "body": "When the live event starts, use this checklist as your action plan for joining, connecting, voting, and enjoying the show.",
       "actions": [
-        { "label": "Set an X Spaces reminder", "href": "#", "variant": "secondary", "urlKey": "x-spaces" },
-        { "label": "Open WaveWarz", "href": "#", "variant": "primary", "urlKey": "wavewarz" }
+        {
+          "label": "Set an X Spaces reminder",
+          "href": "#",
+          "variant": "secondary",
+          "urlKey": "x-spaces"
+        },
+        {
+          "label": "Open WaveWarz",
+          "href": "#",
+          "variant": "primary",
+          "urlKey": "wavewarz"
+        }
       ],
       "missions": [
         {
@@ -354,4 +419,4 @@
     "wavewarz": "https://wavewarz.com",
     "x-spaces": "https://x.com/WaveWarZ/status/2069479414048469446?s=20"
   }
-}
+};

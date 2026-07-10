@@ -28,10 +28,26 @@
     return element;
   }
 
+  function isExternalUrl(href) {
+    return /^https?:\/\//i.test(href || "");
+  }
+
+  function applyLinkBehavior(link, href) {
+    if (isExternalUrl(href)) {
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      return;
+    }
+
+    link.removeAttribute("target");
+    link.removeAttribute("rel");
+  }
+
   function applyButtonData(link, item) {
     link.className = "button " + (item.variant || "secondary");
     link.href = item.href || "#";
     link.textContent = item.label || "";
+    applyLinkBehavior(link, item.href);
 
     if (item.urlKey) {
       link.setAttribute("data-url-placeholder", item.urlKey);
@@ -51,14 +67,79 @@
     });
   }
 
+  function renderHeroActions(parent, home) {
+    if (!parent || !home) {
+      return;
+    }
+
+    parent.textContent = "";
+
+    var primaryActions = makeElement("div", "hero-primary-actions");
+    var utilityActions = makeElement("div", "hero-utility-actions");
+
+    renderActions(primaryActions, home.actions.filter(function (item) {
+      return item.variant === "primary";
+    }));
+    renderActions(utilityActions, home.actions.filter(function (item) {
+      return item.variant !== "primary";
+    }));
+
+    parent.appendChild(primaryActions);
+
+    if (home.checklistHelper) {
+      var helper = makeElement("div", "hero-helper-card");
+      appendText(helper, "h3", null, home.checklistHelper.title);
+      appendText(helper, "p", null, home.checklistHelper.body);
+
+      var link = document.createElement("a");
+      applyButtonData(link, home.checklistHelper.action);
+      helper.appendChild(link);
+      parent.appendChild(helper);
+    }
+
+    parent.appendChild(utilityActions);
+  }
+
   function renderScreenshot(section, data) {
-    if (!data.screenshotLabel && !data.screenshotCaption) {
+    if (!data.screenshotLabel && !data.screenshotCaption && !data.screenshotPath) {
       return;
     }
 
     var figure = makeElement("figure", "screenshot-placeholder");
-    appendText(figure, "div", null, data.screenshotLabel);
-    figure.firstChild.setAttribute("aria-hidden", "true");
+    var frame = makeElement("div", "screenshot-frame");
+    var label = makeElement("span", null, data.screenshotLabel || data.screenshotPath);
+
+    if (data.screenshotPath) {
+      var normalizedPath = data.screenshotPath.toLowerCase();
+      var image = document.createElement("img");
+      image.alt = data.screenshotAlt || "";
+      image.loading = "lazy";
+
+      if (normalizedPath.indexOf("install-phantom.png") !== -1) {
+        figure.classList.add("screenshot-install-phantom");
+      }
+
+      function showImage() {
+        figure.classList.add("has-image");
+        figure.classList.remove("is-missing");
+      }
+
+      image.addEventListener("load", showImage);
+      image.addEventListener("error", function () {
+        image.remove();
+        figure.classList.remove("has-image");
+        figure.classList.add("is-missing");
+      });
+      frame.appendChild(image);
+      image.src = data.screenshotPath;
+
+      if (image.complete && image.naturalWidth > 0) {
+        showImage();
+      }
+    }
+
+    frame.appendChild(label);
+    figure.appendChild(frame);
     appendText(figure, "figcaption", null, data.screenshotCaption);
     section.appendChild(figure);
   }
@@ -118,8 +199,64 @@
 
     var element = makeElement("div", "callout" + (callout.variant ? " " + callout.variant : ""));
     appendText(element, "h3", null, callout.title);
-    appendText(element, "p", null, callout.body);
+
+    if (callout.body) {
+      appendText(element, "p", null, callout.body);
+    }
+
+    if (callout.items) {
+      var list = document.createElement("ul");
+      callout.items.forEach(function (item) {
+        appendText(list, "li", null, item);
+      });
+      element.appendChild(list);
+    }
+
     section.appendChild(element);
+  }
+
+  function renderCallouts(section, callouts) {
+    if (!callouts) {
+      return;
+    }
+
+    callouts.forEach(function (callout) {
+      renderCallout(section, callout);
+    });
+  }
+
+  function renderDeviceChooser(section, chooser) {
+    if (!chooser) {
+      return;
+    }
+
+    var wrapper = makeElement("div", "device-chooser");
+    appendText(wrapper, "h3", null, chooser.title);
+    appendText(wrapper, "p", null, chooser.body);
+
+    var grid = makeElement("div", "device-card-grid");
+    chooser.cards.forEach(function (card) {
+      var article = makeElement("article", "info-card device-card");
+      appendText(article, "h3", null, card.title);
+
+      var list = document.createElement("ul");
+      card.items.forEach(function (item) {
+        appendText(list, "li", null, item);
+      });
+
+      article.appendChild(list);
+
+      if (card.action) {
+        var link = document.createElement("a");
+        applyButtonData(link, card.action);
+        article.appendChild(link);
+      }
+
+      grid.appendChild(article);
+    });
+
+    wrapper.appendChild(grid);
+    section.appendChild(wrapper);
   }
 
   function renderSplitPanels(section, panels) {
@@ -146,9 +283,18 @@
     var checkbox = document.createElement("input");
     checkbox.type = "checkbox";
     checkbox.setAttribute("data-progress", completion.id);
+    checkbox.setAttribute("data-progress-scope", "guide");
     label.appendChild(checkbox);
     appendText(label, "span", null, completion.label);
     section.appendChild(label);
+  }
+
+  function renderHandoff(section, handoff) {
+    if (!handoff) {
+      return;
+    }
+
+    appendText(section, "p", "handoff-line", handoff);
   }
 
   function renderMissionList(section, missions) {
@@ -163,6 +309,7 @@
       var text = document.createElement("span");
       checkbox.type = "checkbox";
       checkbox.setAttribute("data-progress", mission.id);
+      checkbox.setAttribute("data-progress-scope", "battle");
       appendText(text, "strong", null, mission.title);
       text.appendChild(document.createTextNode(mission.body ? " " + mission.body : ""));
       label.appendChild(checkbox);
@@ -190,9 +337,55 @@
     section.appendChild(list);
   }
 
+  function renderMissionComplete(section, data) {
+    if (!data.checklist && !data.event) {
+      return false;
+    }
+
+    section.textContent = "";
+
+    var heading = makeElement("div", "section-heading");
+    appendText(heading, "p", "step-label", data.title);
+    appendText(heading, "p", "mission-complete-badge", data.badge);
+    appendText(heading, "h2", null, data.subtitle);
+    appendText(heading, "p", null, data.body);
+    section.appendChild(heading);
+
+    var layout = makeElement("div", "mission-complete-grid");
+    var checklist = makeElement("div", "mission-complete-checklist");
+    appendText(checklist, "h3", null, data.checklistTitle);
+
+    data.checklist.forEach(function (item) {
+      appendText(checklist, "p", null, "✓ " + item);
+    });
+
+    var eventCard = makeElement("article", "event-card");
+    appendText(eventCard, "h3", null, data.event.title);
+
+    data.event.details.forEach(function (detail) {
+      appendText(eventCard, "p", null, detail);
+    });
+
+    var actions = makeElement("div", "section-actions");
+    renderActions(actions, data.actions);
+    eventCard.appendChild(actions);
+    appendText(eventCard, "small", null, data.finalLine);
+
+    layout.appendChild(checklist);
+    layout.appendChild(eventCard);
+    section.appendChild(layout);
+
+    return true;
+  }
+
   function renderSection(section, data) {
+    if (renderMissionComplete(section, data)) {
+      return;
+    }
+
     section.textContent = "";
     renderHeading(section, data);
+    renderDeviceChooser(section, data.deviceChooser);
 
     if (data.actions) {
       var actions = makeElement("div", "section-actions");
@@ -203,10 +396,12 @@
     renderScreenshot(section, data);
     renderCards(section, data.cards);
     renderInstructions(section, data.instructions, data.instructionVariant);
+    renderCallouts(section, data.callouts);
     renderCallout(section, data.callout);
     renderSplitPanels(section, data.splitPanels);
     renderMissionList(section, data.missions);
     renderFaq(section, data.items);
+    renderHandoff(section, data.handoff);
     renderCompletion(section, data.completion);
   }
 
@@ -235,13 +430,14 @@
           var link = document.createElement("a");
           link.href = item.href;
           link.textContent = item.label;
+          applyLinkBehavior(link, item.href);
           element.appendChild(link);
         });
         return;
       }
 
       if (element.classList.contains("hero-actions")) {
-        renderActions(element, items);
+        renderHeroActions(element, content.home);
         return;
       }
 
@@ -269,9 +465,11 @@
 
       if (url) {
         link.href = url;
+        applyLinkBehavior(link, url);
         link.removeAttribute("aria-disabled");
       } else {
         link.href = "#";
+        applyLinkBehavior(link, "#");
         link.setAttribute("aria-disabled", "true");
       }
     });
@@ -289,21 +487,45 @@
     localStorage.setItem(storageKey, JSON.stringify(progress));
   }
 
+  function migrateProgress(progress) {
+    if (!progress["phantom-ready"] && (progress["why-wallet"] || progress["install-phantom"])) {
+      progress["phantom-ready"] = true;
+      writeProgress(progress);
+    }
+
+    return progress;
+  }
+
+  function calculateProgressPercent(completed, total) {
+    if (!total) {
+      return 0;
+    }
+
+    return Math.round((completed / total) * 100);
+  }
+
   function updateProgress() {
-    var boxes = Array.prototype.slice.call(document.querySelectorAll("[data-progress]"));
+    var boxes = Array.prototype.slice.call(document.querySelectorAll('[data-progress-scope="guide"]'));
     var progressPercent = document.getElementById("progressPercent");
+    var progressRing = document.querySelector(".progress-ring");
     var completed = boxes.filter(function (box) {
       return box.checked;
     }).length;
-    var percent = boxes.length ? Math.round((completed / boxes.length) * 100) : 0;
+    var percent = calculateProgressPercent(completed, boxes.length);
 
     if (progressPercent) {
       progressPercent.textContent = percent + "%";
     }
+
+    if (progressRing) {
+      progressRing.style.setProperty("--progress", percent + "%");
+      progressRing.classList.toggle("is-empty", percent === 0);
+      progressRing.classList.toggle("is-complete", percent === 100);
+    }
   }
 
   function hydrateProgress() {
-    var progress = readProgress();
+    var progress = migrateProgress(readProgress());
     var boxes = Array.prototype.slice.call(document.querySelectorAll("[data-progress]"));
     var resetButton = document.getElementById("resetProgress");
 
@@ -333,11 +555,22 @@
   }
 
   function loadContent() {
+    if (window.location.protocol === "file:" && window.WAVEWARZ_CONTENT) {
+      return Promise.resolve(window.WAVEWARZ_CONTENT);
+    }
+
     return fetch(contentPath).then(function (response) {
       if (!response.ok) {
         throw new Error("Could not load content.json");
       }
       return response.json();
+    }).catch(function (error) {
+      if (window.WAVEWARZ_CONTENT) {
+        console.warn("Using embedded content fallback because content.json could not be loaded.", error);
+        return window.WAVEWARZ_CONTENT;
+      }
+
+      throw error;
     });
   }
 
