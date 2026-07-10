@@ -198,7 +198,6 @@ h2 {
   font-family: Impact, Haettenschweiler, "Arial Black", Arial, Helvetica, sans-serif;
   font-weight: 900;
   letter-spacing: 0;
-  text-transform: uppercase;
 }
 
 h3 {
@@ -790,6 +789,24 @@ input[type="checkbox"] {
   .section {
     padding-block: 48px;
     scroll-margin-top: 24px;
+  }
+
+  .section-heading {
+    margin-bottom: 16px;
+  }
+
+  .screenshot-placeholder {
+    margin-bottom: 14px;
+  }
+
+  .screenshot-frame {
+    min-height: 104px;
+    aspect-ratio: 16 / 5;
+  }
+
+  .screenshot-install-phantom .screenshot-frame {
+    min-height: 72px;
+    aspect-ratio: 16 / 1.8;
   }
 
   .hero {
